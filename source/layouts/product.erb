@@ -40,8 +40,8 @@
       <div class="cover">
         <img src="/assets/images/covers/<%= current_article.slug %>-banner.jpg"
               srcset="/assets/images/covers/<%= current_article.slug %>-banner.jpg 1x, /assets/images/covers/<%= current_article.slug %>-banner@2x.jpg 2x"
-              alt: <%= product_fullname(current_article) %>
-              title: <%= product_fullname(current_article) %> />
+              alt="<%= product_fullname(current_article) %>"
+              title="<%= product_fullname(current_article) %>" />
         <p class="book-price">￥<%= current_article.data.price %></p>
       </div>
 
