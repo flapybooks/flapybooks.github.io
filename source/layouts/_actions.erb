@@ -1,0 +1,8 @@
+<section class="actions">
+  <div class="row">
+    <div class="col text-center">
+      <a class="btn btn-lg btn-flap" href="<%= product_purchase_url(current_article) %>" title="购买电子书"><i class="icon-basket"></i>购买电子书</a>
+      <a class="btn btn-lg btn-outline-secondary sample-downloader" href="<%= config[:site][:tencent_cloud_public_host] %>/samples/<%= current_article.slug %>-sample.pdf" title="样章试读" target="_blank" rel="noopener"><i class="icon-file-pdf"></i>样章试读</a>
+    </div>
+  </div>
+</section>

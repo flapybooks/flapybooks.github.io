@@ -1,0 +1,11 @@
+---
+title: '联系'
+body_class: contact-page
+---
+
+<div class="row justify-content-center">
+  <div class="col-12 col-lg-4">
+    <%= image_tag 'contact.svg', width: '398', height: '265', alt: '联系' %>
+    <p>如果您需要联系我们，请给我们发送电子邮件：<%= mail_to config[:site][:email], config[:site][:email], title: '给我们发电子邮件' %>。</p>
+  </div>
+</div>

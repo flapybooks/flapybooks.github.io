@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8"/>
+  <title><%= config[:site][:name] %><% if content_for?(:page_title) %> - <%= yield_content(:page_title) %><% end %></title>
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="renderer" content="webkit" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
+  <%= display_meta_tags %>
+  <%= stylesheet_link_tag 'application' %>
+  <script src="https://cdn.jsdelivr.net/combine/npm/jquery@3.6.0/dist/jquery.slim.min.js,npm/bootstrap@4.3.1/js/dist/util.min.js,npm/bootstrap@4.3.1/js/dist/dropdown.min.js,npm/bootstrap@4.3.1/js/dist/collapse.min.js"></script>
+</head>
+<body<% if current_page.data.body_class %> class="<%= current_page.data.body_class %>"<% end %>>
+  
+  <div class="header">
+    <div class="container">
+      <nav class="navbar navbar-expand-lg navbar-light">
+        <% link_to(url_for('index'), title: config[:site][:name], class: 'navbar-brand') do %>
+          <%= image_tag 'logo-with-text-v2.svg', alt: config[:site][:name], title: config[:site][:name], height: 30 %>
+        <% end %>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#top-nav" aria-controls="top-nav" aria-expanded="false" aria-label="开闭导航">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse justify-content-end" id="top-nav">
+          <ul class="navbar-nav">
+            <% config.site[:menu_items].each do |path, name| %>
+              <li class="nav-item">
+                <%= link_to name, url_for(path), class: 'nav-link', title: name %>
+              </li>
+            <% end %>
+          </ul>
+        </div>
+      </nav>
+    </div>
+  </div>
+
+  <div class="main">
+    <div class="container">

@@ -1,0 +1,63 @@
+<% content_for :page_title do %>
+  <%= product_fullname(current_article) %>
+<% end %>
+
+<% set_meta_tags description: "#{product_fullname(current_article)} - #{current_article.data.description}",
+                  twitter: {
+                    card: 'summary_large_image',
+                    site: "@#{config.site[:twitter]}",
+                    title: product_fullname(current_article),
+                    description: current_article.data.description,
+                    image: {
+                      _: "#{config.site[:tencent_cloud_public_host]}/covers/#{current_article.slug}-banner@2x.jpg",
+                      alt: product_fullname(current_article)
+                    }
+                  },
+                  og: {
+                    title: product_fullname(current_article),
+                    type: 'article',
+                    url: site_url(current_article),
+                    image: "#{config.site[:tencent_cloud_public_host]}/covers/#{current_article.slug}@2x.jpg",
+                    description: current_article.data.description,
+                    site_name: config.site[:name],
+                    price: {
+                      amount: current_article.data.price,
+                      currency: 'CNY'
+                    }
+                  } 
+%>
+
+<%= partial 'layouts/header' %>
+
+<div class="tagline">
+  <h1><%= product_fullname(current_article) %></h1>
+  <h2><%= current_article.data.description %></h2>
+</div>
+
+<section class="banner">
+  <div class="row">
+    <div class="col text-center">
+      <div class="cover">
+        <img src="/assets/images/covers/<%= current_article.slug %>-banner.jpg"
+              srcset="/assets/images/covers/<%= current_article.slug %>-banner.jpg 1x, /assets/images/covers/<%= current_article.slug %>-banner@2x.jpg 2x"
+              alt: <%= product_fullname(current_article) %>
+              title: <%= product_fullname(current_article) %> />
+        <p class="book-price">￥<%= current_article.data.price %></p>
+      </div>
+
+      <div class="formats">
+        <%= image_tag 'icons/pdf.png', width: 45, alt: 'PDF 格式', title: 'PDF 格式' %>
+        <%= image_tag 'icons/epub.png', width: 45, alt: 'ePub 格式', title: 'ePub 格式' %>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<%= partial 'layouts/actions' %>
+
+<%= yield %>
+
+<%= partial 'layouts/actions' %>
+
+<%= partial 'layouts/footer' %>

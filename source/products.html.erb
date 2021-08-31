@@ -1,0 +1,24 @@
+---
+title: '电子书'
+body_class: products-page
+---
+
+<div class="card-deck book-list">
+  <% blog(:products).articles.sort_by{|p| p.data[:order]}.each do |product| %>
+    <div class="card">
+      <div class="book-cover">
+        <% link_to url_for(product), title: product_fullname(product) do %>
+          <%= image_tag "covers/#{ product.slug }.jpg", 
+                        srcset: "/assets/images/covers/#{ product.slug }.jpg 1x, /assets/images/covers/#{ product.slug }@2x.jpg 2x",
+                        class: "card-img-top", 
+                        alt: product_fullname(product), 
+                        title: product_fullname(product) %>
+        <% end %>
+      </div>
+      <div class="card-body">
+        <h5 class="card-title book-title"><a href="<%= url_for(product) %>" title=""><%= product_fullname(product) %></a></h5>
+        <p class="book-price">￥<%= product.data.price %></p>
+      </div>
+    </div>
+  <% end %>
+</div>

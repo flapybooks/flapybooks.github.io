@@ -1,0 +1,12 @@
+    </div>
+  </div>
+  <div class="footer">
+    <div class="container">
+      <p class="text-center">&copy;2013-&infin; <%= config[:site][:name] %>，保留部分权利</p>
+      <p class="text-center"><%= mail_to config[:site][:email], config[:site][:email], title: '打个招呼吧' %></p>
+      <p class="text-center"><%= link_to "@#{config[:site][:twitter]}", "https://twitter.com/#{config[:site][:twitter]}", title: '关注我们的 Twitter', target: '_blank', rel: 'noopener' %></p>
+    </div>
+    
+  </div>
+</body>
+</html>

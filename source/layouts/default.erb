@@ -1,0 +1,18 @@
+<% if current_page.data.title %>
+  <% content_for :page_title do %>
+    <%= current_page.data.title %>
+  <% end %>
+<% end %>
+
+<%= partial 'layouts/header' %>
+
+<% if current_page.data.title || current_page.data.subtitle %>
+  <div class="tagline">
+    <% if current_page.data.title %><h1><%= current_page.data.title %></h1><% end %>
+    <% if current_page.data.subtitle %><h2><%= current_page.data.subtitle %></h2><% end %>
+  </div>
+<% end %>
+
+<%= yield %>
+
+<%= partial 'layouts/footer' %>
