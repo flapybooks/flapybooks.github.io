@@ -1,5 +1,7 @@
 source 'https://rubygems.org'
 
+gem 'rake'
+
 gem 'middleman', '~> 4.2'
 gem 'middleman-autoprefixer', '~> 3.0'
 gem "middleman-blog", "~> 4.0"

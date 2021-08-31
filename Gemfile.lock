@@ -170,6 +170,7 @@ DEPENDENCIES
   middleman (~> 4.2)
   middleman-autoprefixer (~> 3.0)
   middleman-blog (~> 4.0)
+  rake
   tzinfo-data
   wdm (~> 0.1)
 
