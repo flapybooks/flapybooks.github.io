@@ -1,0 +1,11 @@
+---
+permalink: /404.html
+body_class: 'not-found-page'
+title: '未找到'
+---
+
+<div class="not-found-wrapper">
+  <p><%= image_tag '404-v2.svg', width: '398', height: '229', alt: '未找到' %></p>
+  <p>未找到您要查看的内容，请返回首页。</p>
+  <p><a href=<%= url_for('index') %> title="返回首页" class="btn btn-lg btn-flap">返回首页</a></p>
+</div>
