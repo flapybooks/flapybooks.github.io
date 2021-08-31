@@ -39,9 +39,12 @@ set :skip_build_clean do |path|
   path =~ /\.nojekyll|\.git/
 end
 
+ignore '*.sketch'
+
 configure :build do
   activate :minify_css
   activate :gzip
+  activate :asset_hash
 end
 
 # Products
