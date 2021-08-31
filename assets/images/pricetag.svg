@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<svg width="240px" height="80px" viewBox="0 0 240 80" version="1.1" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <rect width="240" height="80" id="artboard_1" />
+    <clipPath id="clip_1">
+      <use xlink:href="#artboard_1" clip-rule="evenodd" />
+    </clipPath>
+  </defs>
+  <g id="pricetag" clip-path="url(#clip_1)">
+    <use xlink:href="#artboard_1" stroke="none" fill="#FFFFFF" fill-opacity="0" />
+    <path d="M214 50.5188C208.478 50.5188 204 46.0411 204 40.5188C204 34.9965 208.478 30.5188 214 30.5188C219.523 30.5188 224 34.9966 224 40.5188C224 46.0411 219.523 50.5188 214 50.5188L214 50.5188ZM0 0L28.7983 40L0 80L240 80L240 0L0 0" transform="matrix(-1 -2.4034905E-06 2.4034905E-06 -1 239.99976 80.00055)" id="path82" fill="#9570EE" fill-opacity="0.7490196" fill-rule="evenodd" stroke="none" />
+  </g>
+</svg>
