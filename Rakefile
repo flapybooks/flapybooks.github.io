@@ -1,6 +1,16 @@
+require 'webrick'
+
 desc "Launch preview environment"
 task :preview do
   system 'bundle exec middleman'
+end
+
+desc 'Preview the build'
+task :peek do
+  root = File.expand_path './build'
+  server = WEBrick::HTTPServer.new :Port => 8000, :DocumentRoot => root
+  trap 'INT' do server.shutdown end
+  server.start
 end
 
 desc 'Deploy to GitHub Pages'
