@@ -43,9 +43,5 @@ task :b => :build
 
 desc 'Alias to :preview'
 task :s => :preview
-
-desc 'Alias to :preview'
 task :server => :preview
-
-desc 'Alias to :preview'
 task :default => :preview
