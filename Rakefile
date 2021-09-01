@@ -13,6 +13,11 @@ task :peek do
   server.start
 end
 
+desc 'Build the site, as a shortcut only'
+task :build do
+  system 'NO_CONTRACTS=true bundle exec middleman build'
+end
+
 desc 'Deploy to GitHub Pages'
 task :deploy do
   puts 'Push to `master`'
@@ -32,6 +37,9 @@ end
 desc 'Alias to :deploy'
 task :d => :deploy
 task :push => :deploy
+
+desc 'Alias to :build'
+task :b => :build
 
 desc 'Alias to :preview'
 task :s => :preview
