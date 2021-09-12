@@ -1,6 +1,10 @@
-<% content_for :page_title do %>
-  <%= product_fullname(current_article) %>
-<% end %>
+<% content_for :page_title do %><%= product_fullname(current_article) %><% end %>
+<% content_for :head_js do %><script
+    id="fsc-api"
+    src="https://d1f8f9xcsvx3ha.cloudfront.net/sbl/0.8.5/fastspring-builder.min.js"
+    type="text/javascript"
+    data-storefront="andor.onfastspring.com/popup-flapybooks">
+</script><% end %>
 
 <% set_meta_tags description: "#{product_fullname(current_article)} - #{current_article.data.description}",
                   twitter: {
@@ -42,22 +46,41 @@
               srcset="/assets/images/covers/<%= current_article.slug %>-banner.jpg 1x, /assets/images/covers/<%= current_article.slug %>-banner@2x.jpg 2x"
               alt="<%= product_fullname(current_article) %>"
               title="<%= product_fullname(current_article) %>" />
-        <p class="book-price">￥<%= current_article.data.price %></p>
       </div>
-
-      <div class="formats">
-        <%= image_tag 'icons/pdf.png', width: 45, alt: 'PDF 格式', title: 'PDF 格式' %>
-        <%= image_tag 'icons/epub.png', width: 45, alt: 'ePub 格式', title: 'ePub 格式' %>
-      </div>
-
     </div>
   </div>
 </section>
 
-<%= partial 'layouts/actions' %>
+<section>
+  <div class=row>
+    <div class="product-main col-12 col-md-8">
+      <ul class="nav nav-tabs" role="tablist">
+        <% if content_for? :toc %><li class="nav-item" role="presentation"><a class="nav-link active" id="toc-tab" data-toggle="tab" href="#toc" role="tab" aria-controls="toc" aria-selected="true">目录</a></li><% end %>
+        <% if content_for? :praise %><li class="nav-item" role="presentation"> <a class="nav-link" id="praise-tab" data-toggle="tab" href="#praise" role="tab" aria-controls="praise" aria-selected="false">赞誉</a></li><% end %>
+        <% if content_for? :faq %><li class="nav-item" role="presentation"><a class="nav-link" id="faq-tab" data-toggle="tab" href="#faq" role="tab" aria-controls="faq" aria-selected="false">FAQ</a></li><% end %>
+      </ul>
 
-<%= yield %>
+      <div class="tab-content">
+        <% if content_for? :toc %><div class="toc tab-pane fade show active" id="toc" role="tabpanel" aria-labelledby="toc-tab"><%= yield_content :toc %></div><% end %>
+        <% if content_for? :praise %><div class="praise tab-pane fade" id="praise" role="tabpanel" aria-labelledby="praise-tab"><%= yield_content :praise %></div><% end %>
+        <% if content_for? :faq %><div class="faq tab-pane fade" id="faq" role="tabpanel" aria-labelledby="faq-tab"><%= yield_content :faq %></div><% end %>
+      </div>
+      
+    </div>
 
-<%= partial 'layouts/actions' %>
+    <div class="product-sidebar col-12 col-md-4">
+      <p class="product-price">￥<%= current_article.data.price %></p>
+      <ul class="product-details">
+        <% if current_article.data.author %><li class="product-author">作&emsp;&emsp;者：<%= current_article.data.author %></li><% end %>
+        <% if current_article.data.translator %><li class="product-translator">译&emsp;&emsp;者：<%= current_article.data.translator %></li><% end %>
+        <li class="product-formats">格&emsp;&emsp;式：PDF、ePub</li>
+        <% if current_article.data.pages %><li class="product-pages">页&emsp;&emsp;数：<%= current_article.data.pages %> 页</li><% end %>
+        <% if current_article.data.revdate %><li class="product-revdate">更新日期：<%= current_article.data.revdate %></li><% end %>
+      </ul>
+      <p><button name="button" type="button" class="btn btn-lg btn-block btn-flap" title="购买电子书" data-fsc-action="Add,Checkout" data-fsc-item-path-value="<%= current_article.slug %>"><i class="icon-basket"></i>购买电子书</button></p>
+      <p><a class="btn btn-lg btn-outline-secondary btn-block sample-downloader" href="<%= config[:site][:tencent_cloud_public_host] %>/samples/<%= current_article.slug %>-sample.pdf" title="样章试读" target="_blank" rel="noopener"><i class="icon-file-pdf"></i>样章试读</a></p>
+    </div>
+  </div>
+</section>
 
 <%= partial 'layouts/footer' %>

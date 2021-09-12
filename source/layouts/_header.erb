@@ -8,7 +8,8 @@
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
   <%= display_meta_tags %>
   <%= stylesheet_link_tag 'application' %>
-  <script src="https://cdn.jsdelivr.net/combine/npm/jquery@3.6.0/dist/jquery.slim.min.js,npm/bootstrap@4.3.1/js/dist/util.min.js,npm/bootstrap@4.3.1/js/dist/dropdown.min.js,npm/bootstrap@4.3.1/js/dist/collapse.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/combine/npm/jquery@3.6.0/dist/jquery.slim.min.js,npm/bootstrap@4.3.1/dist/js/bootstrap.min.js"></script>
+  <% if content_for? :head_js %><%= yield_content :head_js %><% end %>
 </head>
 <body<% if current_page.data.body_class %> class="<%= current_page.data.body_class %>"<% end %>>
   
